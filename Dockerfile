@@ -14,6 +14,11 @@ RUN dotnet restore
 COPY . .
 RUN dotnet publish -c Release -o /app/publish
 
+# Create a non-root user and group for the app
+RUN addgroup --system appgroup && adduser --system --group appuser
+USER appuser
+
+
 # Create the final image with the built app
 FROM base AS final
 WORKDIR /app
