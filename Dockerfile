@@ -14,7 +14,7 @@ RUN dotnet restore
 COPY . .
 RUN dotnet publish -c Release -o /app/publish
 
-RUN chmod +w /app
+RUN chmod +wx /app
 
 # Create the final image with the built app
 FROM base AS final
