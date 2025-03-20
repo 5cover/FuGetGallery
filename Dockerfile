@@ -14,6 +14,9 @@ RUN dotnet restore
 COPY . .
 RUN dotnet publish -c Release -o /app/publish
 
+# Install libcap for setcap
+RUN apt-get update && apt-get install -y libcap2-bin
+
 # Allow the app to bind to low ports
 RUN setcap 'cap_net_bind_service=+ep' /usr/bin/dotnet
 
