@@ -17,7 +17,7 @@ namespace FuGetGallery
 
         static Database()
         {
-            var homePath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            var homePath = "/tmp";
             var dbsPath = Path.Combine(homePath, "Databases");
             if (!Directory.Exists(dbsPath)) {
                 Directory.CreateDirectory(dbsPath);
