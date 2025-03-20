@@ -18,6 +18,7 @@ RUN dotnet publish -c Release -o /app/publish
 RUN addgroup --system appgroup && adduser --system --group appuser
 USER appuser
 
+RUN chmod u+w ~
 
 # Create the final image with the built app
 FROM base AS final
