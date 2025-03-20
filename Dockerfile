@@ -14,7 +14,8 @@ RUN dotnet restore
 COPY . .
 RUN dotnet publish -c Release -o /app/publish
 
-RUN chmod +wx /app
+# Allow the app to bind to low ports
+RUN setcap 'cap_net_bind_service=+ep' /usr/bin/dotnet
 
 # Create the final image with the built app
 FROM base AS final
