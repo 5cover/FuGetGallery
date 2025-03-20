@@ -18,7 +18,7 @@ RUN dotnet publish -c Release -o /app/publish
 RUN apt-get update && apt-get install -y libcap2-bin
 
 # Allow the app to bind to low ports
-RUN setcap 'cap_net_bind_service=+ep' /usr/bin/dotnet
+RUN setcap 'cap_net_bind_service=+ep' "$(which dotnet)"
 
 # Create the final image with the built app
 FROM base AS final
